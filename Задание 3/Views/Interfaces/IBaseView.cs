@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiaryProject.Models
+namespace DiaryProject.Views.Interfaces
 {
-    internal class EventModel
+    public interface IBaseView
     {
     }
 }

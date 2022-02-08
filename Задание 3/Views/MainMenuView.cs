@@ -4,9 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Задание_3.Views
+namespace DiaryProject.Views
 {
-    internal class MainMenuView
+    public  class MainMenuView : BaseView
     {
+        public MainMenuView(bool appStart) 
+        {
+            if (!appStart)
+                throw new Exception(message: $"{ToString()} создался до того, как запустился проект");
+
+            
+        }
     }
 }

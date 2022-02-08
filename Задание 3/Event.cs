@@ -7,7 +7,7 @@ using System.Globalization;
 using Word = Microsoft.Office.Interop.Word;
 
 
-namespace Задание_3
+namespace DiaryProject
 {
     class Event : IEvent
     {
