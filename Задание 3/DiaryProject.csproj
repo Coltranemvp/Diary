@@ -46,6 +46,7 @@
     <Compile Include="Event.cs" />
     <Compile Include="IEvent.cs" />
     <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Privitives\Enums\ProgramMode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\BaseView.cs" />
@@ -86,7 +87,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Interfaces\" />
+    <Folder Include="Views\primitives\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
