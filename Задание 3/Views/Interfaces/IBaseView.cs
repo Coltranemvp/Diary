@@ -8,5 +8,7 @@ namespace DiaryProject.Views.Interfaces
 {
     public interface IBaseView
     {
+        void ShowMessage(string messageText);
+        string GetUserResponse();
     }
 }
