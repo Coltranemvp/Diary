@@ -46,11 +46,13 @@
     <Compile Include="Event.cs" />
     <Compile Include="IEvent.cs" />
     <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Models\VIews\ProgramModeModel.cs" />
+    <Compile Include="Primitives\Enum\MainMenuMode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\BaseView.cs" />
     <Compile Include="Views\Interfaces\IBaseView.cs" />
-    <Compile Include="Views\MainMenuView.cs" />
+    <Compile Include="Views\BaseMenuView.cs" />
     <Compile Include="Сontrollers\BaseEventController.cs" />
   </ItemGroup>
   <ItemGroup>
