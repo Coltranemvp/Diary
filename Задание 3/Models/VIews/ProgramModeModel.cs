@@ -10,6 +10,7 @@ namespace DiaryPetProject.Models.VIews
     public class ProgramModeModel
     {
         public MainMenuMode Mode { get; set; }
+
         public string MessageText { get; set; }
     }
 }

@@ -5,9 +5,10 @@
         AddEvent,
         Changed,
         DeleteEvent,
-        AddPushForEvent,
         WatchEvents,
+        AddPushForEvent,
         ExportEvent,
-        Exite
+        Exite,
+        Unknow
     }
 }
