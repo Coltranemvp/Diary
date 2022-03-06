@@ -51,9 +51,15 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\AddEventView.cs" />
+    <Compile Include="Views\AddPushForEventView.cs" />
     <Compile Include="Views\BaseView.cs" />
+    <Compile Include="Views\ChangedEventView.cs" />
+    <Compile Include="Views\ExiteView.cs" />
+    <Compile Include="Views\ExportEventView.cs" />
+    <Compile Include="Views\DeleteEventView.cs" />
     <Compile Include="Views\Interfaces\IBaseView.cs" />
     <Compile Include="Views\BaseMenuView.cs" />
+    <Compile Include="Views\ShowEventsEvent.cs" />
     <Compile Include="Сontrollers\BaseEventController.cs" />
   </ItemGroup>
   <ItemGroup>
