@@ -3,9 +3,9 @@
     public enum MainMenuMode
     {        
         AddEvent,
-        Changed,
+        ChangedEvent,
         DeleteEvent,
-        WatchEvents,
+        ShowEvents,
         AddPushForEvent,
         ExportEvent,
         Exite,
