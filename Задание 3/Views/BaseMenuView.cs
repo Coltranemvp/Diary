@@ -26,10 +26,10 @@ namespace DiaryProject.Views
         }
 
 
-        private int CurrentKeyMode 
+        private int CurrentKeyMode
         {
-            get => _currentKeyMode; 
-            set 
+            get => _currentKeyMode;
+            set
             {
                 if (value < FirstIndexMode)
                 {
@@ -66,7 +66,7 @@ namespace DiaryProject.Views
 
                 if (CurrentKeyMode == (int)item.Mode)
                 {
-                    ShowMessage(item.MessageText+"   < ---", ConsoleColor.Red);
+                    ShowMessage(item.MessageText + "   < ---", ConsoleColor.Red);
                     continue;
                 }
 
@@ -89,6 +89,7 @@ namespace DiaryProject.Views
 
             } while (flagEnter);
 
+            NavigateToCurrentMode();
 
         }
 
@@ -101,15 +102,24 @@ namespace DiaryProject.Views
                 CurrentKeyMode--;
 
             OutputMenu();
-            GetProgrameMode();
         }
 
-        private void GetProgrameMode()
+        private void NavigateToCurrentMode()
         {
-            /*switch(CurrentKeyMode)
-            { case 0:
+             switch (CurrentKeyMode)
+            {
+                case 0: 
+                    new AddEventView();
+                    break;
+                    case 1:
+                        new 
 
-            }*/
+                default:
+                    Console.WriteLine("Что-то пошло не так, выберите режим работы заново!");
+                    OutputMenu();
+                    break;
+
+            };
         }
 
         // Тестовые данные               --             ----                   ---
@@ -123,7 +133,7 @@ namespace DiaryProject.Views
             programModeModelList.Add(programModeModel);
 
             ProgramModeModel programModeModel1 = new ProgramModeModel();
-            programModeModel1.Mode = MainMenuMode.Changed;
+            programModeModel1.Mode = MainMenuMode.ChangedEvent;
             programModeModel1.MessageText = ("Изменить ивент, его дату и время проведения");
             programModeModelList.Add(programModeModel1);
 
@@ -133,7 +143,7 @@ namespace DiaryProject.Views
             programModeModelList.Add(programModeModel2);
 
             ProgramModeModel programModeModel3 = new ProgramModeModel();
-            programModeModel3.Mode = MainMenuMode.WatchEvents;
+            programModeModel3.Mode = MainMenuMode.ShowEvents;
             programModeModel3.MessageText = ("Посмотреть расписание ивентов, их дату и время проведения");
             programModeModelList.Add(programModeModel3);
 
