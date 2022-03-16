@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiaryProject.Сontrollers
+namespace DiaryProject.Сontrollers.Navigation.Primitives.Interfaces
 {
-    internal class BaseEventController
+    public interface IResult
     {
     }
 }

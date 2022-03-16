@@ -90,7 +90,6 @@ namespace DiaryProject.Views
             } while (flagEnter);
 
             NavigateToCurrentMode();
-
         }
 
         private void UpdateKeyMode(ConsoleKeyInfo keyPushed)
@@ -104,15 +103,33 @@ namespace DiaryProject.Views
             OutputMenu();
         }
 
+
+        //TODO добавить метод навигации в базовый класс 
         private void NavigateToCurrentMode()
         {
-             switch (CurrentKeyMode)
+            switch (CurrentKeyMode)
             {
-                case 0: 
+                case 0:
                     new AddEventView();
                     break;
-                    case 1:
-                        new 
+                case 1:
+                    new ChangedEventView();
+                    break;
+                case 2:
+                    new DeleteEventView();
+                    break;
+                case 3:
+                    new ShowEventsEvent();
+                    break;
+                case 4:
+                    new AddPushForEventView();
+                    break;
+                case 5:
+                    new ExportEventView();
+                    break;
+                case 6:
+                    new ExiteView();
+                    break;
 
                 default:
                     Console.WriteLine("Что-то пошло не так, выберите режим работы заново!");

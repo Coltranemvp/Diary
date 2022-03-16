@@ -13,7 +13,7 @@ namespace DiaryProject.Views
 
         public BaseView()
         {
-
+            Console.Clear();
         }
 
         public void ShowMessage(string messageText, ConsoleColor TextColor = ConsoleColor.White)
