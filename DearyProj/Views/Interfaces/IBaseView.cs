@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiaryProject.Views.Interfaces
+namespace DearyPetProj.Views.Interfaces
 {
     public interface IBaseView
     {

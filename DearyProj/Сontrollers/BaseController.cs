@@ -1,53 +1,66 @@
-﻿using DiaryProject.Сontrollers.Interfaces;
-using DiaryProject.Сontrollers.Navigation.Primitives;
-using DiaryProject.Сontrollers.Navigation.Primitives.Interfaces;
+﻿using DearyPetProj.Сontrollers.Interfaces;
+using DearyPetProj.Сontrollers.Navigation.Primitives;
+using DearyPetProj.Сontrollers.Navigation.Primitives.Interfaces;
 using System.Collections.Generic;
 
-namespace DiaryProject.Сontrollers
+namespace DearyPetProj.Сontrollers
 {
-    public class BaseController : IBaseController
+    public abstract class BaseController : IBaseController
     {
         private IParam _param;
-        
-      
-        
-        
+        private IResult _result;
+
+
         /// <summary>
         /// вызвать ассихроно -> создать экземляр контроллера в котором вызывуться основные методы -> вернуть результат после, вызвав метод возвращающий Tresult
         /// </summary>
-        public BaseController ()
+        public BaseController()
         {
+           //nothing here...
         }
+
+
+        public IResult GetResult()
+        {
+            return _result;
+        }
+
 
         public virtual void PrepareParam(IParam param)
         {
             _param = param;
         }
-        
 
+
+        public abstract void Start();
     }
+
 
     public static class BaseControllerExtensions
     {
-         
-        public static void  NavigateTo<T> (this BaseController baseController) where T : IBaseController, new()
+
+        public static void NavigateTo(this BaseController baseController, IBaseController newController)
         {
-            IBaseController newController = new T ();
+            newController.Start();
         }
 
-        public static void NavigateTo<T, P>(this BaseController baseController, IParam param) 
-            where T : IBaseController, new()
-            where P : BaseParam
+        public static void NavigateTo(this BaseController baseController, IBaseController newController, IParam param)
         {
-            IBaseController newController = new T();
             newController.PrepareParam(param);
             newController.Start();
         }
 
-        public static void NavigateBack<T>(this BaseController baseController) where T : IBaseController, new()
+        public static void NavigateTo(this BaseController baseController, IBaseController newController, out IResult result)
         {
-            IBaseController newController = new T();
-            BaseController.navigateWay.;
+            newController.Start();
+            result = newController.GetResult();
+        }
+
+        public static void NavigateTo(this BaseController baseController, IBaseController newController, IParam param, out IResult result)
+        {
+            newController.PrepareParam(param);
+            newController.Start();
+            result = newController.GetResult();
         }
     }
 }

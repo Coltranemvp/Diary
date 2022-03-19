@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiaryProject.Views
+namespace DearyPetProj.Views
 {
     public class AddEventView : BaseView
     {

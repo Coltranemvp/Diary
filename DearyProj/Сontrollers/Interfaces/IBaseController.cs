@@ -1,11 +1,15 @@
-﻿using DiaryProject.Сontrollers.Navigation.Primitives;
-using DiaryProject.Сontrollers.Navigation.Primitives.Interfaces;
+﻿using DearyPetProj.Сontrollers.Navigation.Primitives;
+using DearyPetProj.Сontrollers.Navigation.Primitives.Interfaces;
 
-namespace DiaryProject.Сontrollers.Interfaces
+namespace DearyPetProj.Сontrollers.Interfaces
 {
     public interface IBaseController
     {
         public void PrepareParam(IParam param);
+
+        public IResult GetResult();
+
+        public void Start();
 
     }
 

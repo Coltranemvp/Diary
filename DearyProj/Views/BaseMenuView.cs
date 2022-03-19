@@ -3,7 +3,7 @@ using DiaryPetProject.Privitives.Enums;
 using System;
 using System.Collections.Generic;
 
-namespace DiaryProject.Views
+namespace DearyPetProj.Views
 {
     public class BaseMenuView : BaseView
     {

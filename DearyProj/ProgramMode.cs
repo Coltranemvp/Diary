@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Задание_3.Privitives.Enums
+namespace DearyPetProj.Privitives.Enums
 {
     public enum ProgramMode
     {
