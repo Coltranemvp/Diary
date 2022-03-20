@@ -2,8 +2,8 @@
 using DearyPetProj.Сontrollers.Extensions;
 using DearyPetProj.Сontrollers.Navigation.Primitives;
 using DearyPetProj.Сontrollers.Navigation.Primitives.Interfaces;
-using DiaryPetProject.Models.Views;
-using DiaryPetProject.Privitives.Enums;
+using DearyPetProj.Models.Views;
+using DearyPetProj.Privitives.Enums;
 
 namespace DearyPetProj.Сontrollers
 {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DiaryPetProject.Privitives.Enums;
+using DearyPetProj.Privitives.Enums;
 
-namespace DiaryPetProject.Models.Views
+namespace DearyPetProj.Models.Views
 {
     public class ProgramModeModel
     {

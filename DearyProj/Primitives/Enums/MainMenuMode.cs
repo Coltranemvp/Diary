@@ -1,4 +1,4 @@
-﻿namespace DiaryPetProject.Privitives.Enums
+﻿namespace DearyPetProj.Privitives.Enums
 {
     public enum MainMenuMode
     {        

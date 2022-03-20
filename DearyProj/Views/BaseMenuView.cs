@@ -1,5 +1,5 @@
-﻿using DiaryPetProject.Models.Views;
-using DiaryPetProject.Privitives.Enums;
+﻿using DearyPetProj.Models.Views;
+using DearyPetProj.Privitives.Enums;
 using System;
 using System.Collections.Generic;
 
