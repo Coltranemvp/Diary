@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DiaryPetProject.Privitives.Enums;
 
-namespace DiaryPetProject.Models.VIews
+namespace DiaryPetProject.Models.Views
 {
     public class ProgramModeModel
     {
