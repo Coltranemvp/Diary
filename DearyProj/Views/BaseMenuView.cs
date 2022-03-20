@@ -52,7 +52,7 @@ namespace DearyPetProj.Views
         private void OutputMenu()
         {
             Console.Clear();
-            ShowMessage("Режимы работы ежедневника:\n");
+            ShowMessage($"Режимы работы ежедневника:{Environment.NewLine}");
 
             foreach (ProgramModeModel item in _programModeModelList)
             {
@@ -132,8 +132,6 @@ namespace DearyPetProj.Views
                     break;
 
             };
-        }
-
-       
+        }       
     }
 }
