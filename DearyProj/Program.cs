@@ -1,4 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-using DearyPetProj.Сontrollers;
+﻿using DearyPetProj.Сontrollers;
 
-BaseMenuController baseMenuController = new BaseMenuController(false);
+
+
+BaseMenuController.GetInstance();
