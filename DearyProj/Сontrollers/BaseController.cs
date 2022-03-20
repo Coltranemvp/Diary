@@ -4,13 +4,7 @@ using DearyPetProj.Сontrollers.Navigation.Primitives.Interfaces;
 namespace DearyPetProj.Сontrollers
 {
     public abstract class BaseController : IBaseController
-    {
-
-        public delegate void AccountHandler(IBaseController newController);
-
-        public event AccountHandler asd;
-      
-        
+    {  
         public BaseController()
         {
             //nothing here...
@@ -70,6 +64,5 @@ namespace DearyPetProj.Сontrollers
         public abstract TResult GetResult();
 
         public abstract void PrepareParam(TParam param);
-    }
-    
+    }    
 }
