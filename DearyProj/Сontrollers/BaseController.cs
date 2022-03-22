@@ -7,7 +7,7 @@ namespace DearyPetProj.Сontrollers
     {  
         public BaseController()
         {
-            //nothing here...
+            Start();
         }
 
 
