@@ -9,5 +9,11 @@ namespace DearyPetProj.Сontrollers.Navigation.Primitives
 {
     public class BaseResult : IResult
     {
+        public BaseResult(bool reject)
+        {
+            Reject = reject;
+        }
+
+        public bool Reject { get; set; }
     }
 }

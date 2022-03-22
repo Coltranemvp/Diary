@@ -8,5 +8,6 @@ namespace DearyPetProj.Сontrollers.Navigation.Primitives.Interfaces
 {
     public interface IResult
     {
+        public bool Reject { get; set; }
     }
 }
