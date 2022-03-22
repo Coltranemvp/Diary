@@ -2,22 +2,40 @@
 using DearyPetProj.Privitives.Enums;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DearyPetProj.Views
 {
-    public class BaseMenuView : BaseView
+    public class MenuView : BaseView
     {
-        private readonly List<ProgramModeModel> _programModeModelList;
+        private List<ProgramModeModel> _programModeModelList;
 
         private int _currentKeyMode = 0;
         private const int LastIndexMode = 6;
         private const int FirstIndexMode = 0;
 
-        public BaseMenuView(List<ProgramModeModel> programModeModelList)
+        public MenuView()
         {
-            _programModeModelList = programModeModelList;
-            
-            ShowMenu();
+        }
+
+        public List<ProgramModeModel> ProgramModeModelList
+        {
+            get => _programModeModelList;
+            set
+            {
+                if (value is null)
+                {
+                    Console.WriteLine("Что-то пошло не так...");
+
+                    Debug.WriteLine($"{nameof(ProgramModeModelList)} is null");
+                    Debugger.Break();
+
+                    return;
+                }
+
+                _programModeModelList = value;
+                ShowMenu();                
+            }
         }
 
 
@@ -132,6 +150,6 @@ namespace DearyPetProj.Views
                     break;
 
             };
-        }       
+        }
     }
 }
