@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 namespace DearyPetProj.Сontrollers
 {
     public class AddEventController : ControllerResult<Result>
-
     {
         public override Result GetResult()
         {
@@ -32,7 +31,7 @@ namespace DearyPetProj.Сontrollers
 
     public class Result : BaseResult
     {
-        public Result(string message)
+        public Result(string message, bool reject = false) : base(reject)
         {
             Message = message;
         }
