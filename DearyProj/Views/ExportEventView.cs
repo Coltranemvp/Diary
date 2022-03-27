@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DearyPetProj.Views
 {
-    internal class ExportEventView
+    public class ExportEventView
     {
     }
 }
