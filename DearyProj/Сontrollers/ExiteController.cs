@@ -1,4 +1,5 @@
-﻿using DearyPetProj.Сontrollers.Navigation.Primitives;
+﻿using DearyPetProj.Сontrollers.Interfaces;
+using DearyPetProj.Сontrollers.Navigation.Primitives.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,9 @@ using System.Threading.Tasks;
 
 namespace DearyPetProj.Сontrollers
 {
-    public class ShowEventController<T> : ControllerParam<T>
-        where T : BaseParam
+    public class ExiteController : BaseController
     {
-        public override void PrepareParam(T param)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void SetNavigationWay()
+        public override void SetNavigationWay(IBaseController controller, IParam param)
         {
             throw new NotImplementedException();
         }
@@ -25,6 +20,4 @@ namespace DearyPetProj.Сontrollers
             throw new NotImplementedException();
         }
     }
-
-
 }
