@@ -16,6 +16,11 @@ namespace DearyPetProj.Views
             Console.Clear();
         }
 
+        public virtual void Dispose()
+        {
+
+        }
+
         public void ShowMessage(string messageText, ConsoleColor TextColor = ConsoleColor.White)
         {
             Console.ForegroundColor = TextColor;
@@ -41,11 +46,6 @@ namespace DearyPetProj.Views
             } while (isGetResponse);
 
             return response;
-        }
-
-        public virtual void Dispose()
-        {
-            
-        }
+        }        
     }
 }

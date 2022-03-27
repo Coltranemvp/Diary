@@ -1,41 +1,36 @@
 ﻿using DearyPetProj.Models.Views;
 using DearyPetProj.Privitives.Enums;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace DearyPetProj.Views
 {
     public class MenuView : BaseView
     {
-        private List<ProgramModeModel> _programModeModelList;
-
-        private int _currentKeyMode = 0;
-        private const int LastIndexMode = 6;
+        private readonly int LastIndexMode;
+        private readonly List<ProgramModeModel> ProgramModeModelList;
         private const int FirstIndexMode = 0;
 
-        public MenuView()
-        {
-        }
+        private int _currentKeyMode = 0;
+       
+        public event Action<MainMenuMode> SelectedMenu;
 
-        public List<ProgramModeModel> ProgramModeModelList
+
+        public MenuView(List<ProgramModeModel> programModeModelList)
         {
-            get => _programModeModelList;
-            set
+            if (ProgramModeModelList is null)
             {
-                if (value is null)
-                {
-                    Console.WriteLine("Что-то пошло не так...");
+                Console.WriteLine("Что-то пошло не так...");
 
-                    Debug.WriteLine($"{nameof(ProgramModeModelList)} is null");
-                    Debugger.Break();
+                Debug.WriteLine($"{nameof(ProgramModeModelList)} is null");
+                Debugger.Break();
 
-                    return;
-                }
-
-                _programModeModelList = value;
-                ShowMenu();                
+                return;
             }
+
+            ProgramModeModelList = programModeModelList;
+            LastIndexMode = ProgramModeModelList.Count;
+
+            ShowMenu();
         }
 
 
@@ -61,7 +56,7 @@ namespace DearyPetProj.Views
         }
 
 
-        private void ShowMenu()
+        public void ShowMenu()
         {
             OutputMenu();
             GetMenuMode();
@@ -72,7 +67,7 @@ namespace DearyPetProj.Views
             Console.Clear();
             ShowMessage($"Режимы работы ежедневника:{Environment.NewLine}");
 
-            foreach (ProgramModeModel item in _programModeModelList)
+            foreach (ProgramModeModel item in ProgramModeModelList)
             {
                 if (MainMenuMode.Exite == item.Mode)
                     ShowMessage("\n");
@@ -102,7 +97,7 @@ namespace DearyPetProj.Views
 
             } while (flagEnter);
 
-            NavigateToCurrentMode();
+            SelectedMenu.Invoke(ProgramModeModelList[CurrentKeyMode].Mode);
         }
 
         private void UpdateKeyMode(ConsoleKeyInfo keyPushed)
@@ -114,42 +109,6 @@ namespace DearyPetProj.Views
                 CurrentKeyMode--;
 
             OutputMenu();
-        }
-
-
-        //TODO добавить метод навигации в базовый класс 
-        private void NavigateToCurrentMode()
-        {
-            switch (CurrentKeyMode)
-            {
-                case 0:
-                    new AddEventView();
-                    break;
-                case 1:
-                    new ChangedEventView();
-                    break;
-                case 2:
-                    new DeleteEventView();
-                    break;
-                case 3:
-                    new ShowEventsEvent();
-                    break;
-                case 4:
-                    new AddPushForEventView();
-                    break;
-                case 5:
-                    new ExportEventView();
-                    break;
-                case 6:
-                    new ExiteView();
-                    break;
-
-                default:
-                    Console.WriteLine("Что-то пошло не так, выберите режим работы заново!");
-                    OutputMenu();
-                    break;
-
-            };
-        }
+        }       
     }
 }
