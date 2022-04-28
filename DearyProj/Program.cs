@@ -1,5 +1,6 @@
-﻿using DearyPetProj.Сontrollers;
+﻿using DearyPetProj.Views;
+using DearyPetProj.Сontrollers;
 
 
 
-BaseMenuController.GetInstance();
+MenuController.GetInstance().Start();
