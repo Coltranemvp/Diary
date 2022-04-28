@@ -4,34 +4,46 @@ using System.Diagnostics;
 
 namespace DearyPetProj.Views
 {
-    public class MenuView : BaseView
+    public sealed class MenuView : BaseView
     {
-        private readonly int LastIndexMode;
-        private readonly List<ProgramModeModel> ProgramModeModelList;
+        private int LastIndexMode;
+        private  List<ProgramModeModel> _programModeModelList;
         private const int FirstIndexMode = 0;
 
+        private DateTime _dateTimeNow;
         private int _currentKeyMode = 0;
-       
-        public event Action<MainMenuMode> SelectedMenu;
 
+        public event Action<MainMenuMode> MenuChange;
 
-        public MenuView(List<ProgramModeModel> programModeModelList)
+        private static MenuView _instance;
+        private static object syncRoot = new();
+        private static object syncUpdate = new();
+
+        
+
+        private MenuView()
         {
-            if (ProgramModeModelList is null)
+
+        }
+
+        public void SetProgramMode(List<ProgramModeModel> programModelList)
+        {
+            if (programModelList is null)
             {
                 Console.WriteLine("Что-то пошло не так...");
 
-                Debug.WriteLine($"{nameof(ProgramModeModelList)} is null");
+                Debug.WriteLine($"{nameof(_programModeModelList)} is null");
                 Debugger.Break();
 
                 return;
             }
 
-            ProgramModeModelList = programModeModelList;
-            LastIndexMode = ProgramModeModelList.Count;
+            _programModeModelList = programModelList;
+            LastIndexMode = _programModeModelList.Count - 1;
 
-            ShowMenu();
+            Active = true;
         }
+
 
 
         private int CurrentKeyMode
@@ -55,32 +67,93 @@ namespace DearyPetProj.Views
             }
         }
 
+        protected override void UnsubscribingEvents()
+        {            
+            ChangeActiveState -= ChangeActiveState_UpdateData;
+        }
 
-        public void ShowMenu()
+
+        protected override void SubscribingEvents()
         {
+            ChangeActiveState += ChangeActiveState_UpdateData;
+        }
+
+
+        public static MenuView InitInstance()
+        {
+            if (_instance is null)
+            {
+                lock (syncRoot)
+                {
+                    if (_instance is null)
+                        _instance = new MenuView();
+                }
+            }
+            return _instance;
+        }
+
+
+        private async Task DataUpdate()
+        {
+            await Task.Run(() => innerDataUpdate());
+
+            void innerDataUpdate()
+            {
+                do
+                {
+                    _dateTimeNow = DateTime.Now;
+                    OutputMenu();
+                    Thread.Sleep(1000);
+                } while (Active);
+            }
+        }
+
+
+        public override bool ShowView()
+        {
+            if (_programModeModelList is null)
+            {
+                ShowMessage("Что-то пошло не так...");                
+
+                Debug.WriteLine($"{nameof(_programModeModelList)} is null");
+
+                Debugger.Break();
+                Console.ReadKey();
+
+                return false;
+            }
+
             OutputMenu();
             GetMenuMode();
+
+            return true;
         }
+
 
         private void OutputMenu()
         {
-            Console.Clear();
-            ShowMessage($"Режимы работы ежедневника:{Environment.NewLine}");
-
-            foreach (ProgramModeModel item in ProgramModeModelList)
+            lock (syncUpdate)
             {
-                if (MainMenuMode.Exite == item.Mode)
-                    ShowMessage("\n");
+                Console.Clear();
+                ShowMessage($"Режимы работы ежедневника:{Environment.NewLine} {Environment.NewLine}");
+                ShowMessage($"Текущая дата: {_dateTimeNow} {Environment.NewLine}{Environment.NewLine}");
 
-                if (CurrentKeyMode == (int)item.Mode)
+                foreach (ProgramModeModel item in _programModeModelList)
                 {
-                    ShowMessage(item.MessageText + "   < ---", ConsoleColor.Red);
-                    continue;
-                }
+                    if (MainMenuMode.Exite == item.Mode)
+                        ShowMessage(Environment.NewLine);
 
-                ShowMessage(item.MessageText);
+                    if (CurrentKeyMode == (int)item.Mode)
+                    {
+                        ShowMessage(item.MessageText + "   < ---", ConsoleColor.Red);
+                        continue;
+                    }
+
+                    ShowMessage(item.MessageText);
+                }
             }
         }
+
 
         private void GetMenuMode()
         {
@@ -97,7 +170,7 @@ namespace DearyPetProj.Views
 
             } while (flagEnter);
 
-            SelectedMenu.Invoke(ProgramModeModelList[CurrentKeyMode].Mode);
+            MenuChange.Invoke(_programModeModelList[CurrentKeyMode].Mode);
         }
 
         private void UpdateKeyMode(ConsoleKeyInfo keyPushed)
@@ -109,6 +182,12 @@ namespace DearyPetProj.Views
                 CurrentKeyMode--;
 
             OutputMenu();
-        }       
+        }
+
+        private void ChangeActiveState_UpdateData()
+        {
+            if (Active)
+                DataUpdate();
+        }
     }
 }
