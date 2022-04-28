@@ -1,4 +1,7 @@
-﻿using DearyPetProj.Сontrollers.Interfaces;
+﻿using DearyPetProj.Models;
+using DearyPetProj.Views;
+using DearyPetProj.Views.Interfaces;
+using DearyPetProj.Сontrollers.Interfaces;
 using DearyPetProj.Сontrollers.Navigation.Primitives;
 using DearyPetProj.Сontrollers.Navigation.Primitives.Interfaces;
 using System;
@@ -11,31 +14,51 @@ namespace DearyPetProj.Сontrollers
 {
     public class AddEventController : ControllerResult<Result>
     {
+
+        private Result _result = new("");
+
+        public AddEventController(IBaseView view) : base(view)
+        {
+
+        }
         public override Result GetResult()
         {
-            throw new NotImplementedException();
+            return _result;
         }
 
-        public override void SetNavigationWay()
+
+
+        public override bool Start()
         {
-            throw new NotImplementedException();
+            View.ShowView();
+
+            return true;
         }
 
-        public override void Start()
-        {
-            Console.WriteLine("AddEventController");
-            Console.ReadLine();
-        }
-       
+         
+
     }
 
     public class Result : BaseResult
     {
+        private EventModel _eventModel;
+        private string _message;
+
         public Result(string message, bool reject = false) : base(reject)
         {
             Message = message;
         }
 
-        public string Message { get; set; }
+        public string Message
+        {
+            get => _message;
+            set => _message = value;
+        }
+
+        public EventModel EventModel
+        {
+            get => _eventModel;
+            set => _eventModel = value;
+        }
     }
 }
