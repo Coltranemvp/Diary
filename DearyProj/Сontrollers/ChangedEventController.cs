@@ -1,4 +1,5 @@
-﻿using DearyPetProj.Сontrollers.Interfaces;
+﻿using DearyPetProj.Views.Interfaces;
+using DearyPetProj.Сontrollers.Interfaces;
 using DearyPetProj.Сontrollers.Navigation.Primitives.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,13 @@ namespace DearyPetProj.Сontrollers
 {
     public class ChangedEventController : BaseController
     {
-        public override void SetNavigationWay(IBaseController controller, IParam param)
+        public ChangedEventController(IBaseView view) : base(view)
         {
-            throw new NotImplementedException();
+
         }
 
-        public override void Start()
+
+        public override bool Start()
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
-﻿using DearyPetProj.Сontrollers.Interfaces;
+﻿using DearyPetProj.Views.Interfaces;
+using DearyPetProj.Сontrollers.Interfaces;
 using DearyPetProj.Сontrollers.Navigation.Primitives.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,15 @@ namespace DearyPetProj.Сontrollers
 {
     public class ExiteController : BaseController
     {
-        public override void SetNavigationWay(IBaseController controller, IParam param)
+        public ExiteController(IBaseView view) : base(view)
         {
-            throw new NotImplementedException();
+
         }
 
-        public override void Start()
+
+
+
+        public override bool Start()
         {
             throw new NotImplementedException();
         }
