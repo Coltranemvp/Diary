@@ -13,7 +13,7 @@ namespace DearyPetProj.Views
         private const string AddDateEventText = "Введите время начал мероприятия";
         private const string AddPushTimeEventText = "Введите время за которое нужно уведометь о начале мероприятия";
 
-        public event Action<EventModel> SelectedMenu;
+        
         public AddEventView()
         {
 
@@ -27,10 +27,10 @@ namespace DearyPetProj.Views
             return true;
         }
 
-        private EventModel GetEventModel()
+        private UserEvent GetEventModel()
         {
             Console.ReadKey();
-            return new EventModel();
+            return new UserEvent();
         }
     }
 }

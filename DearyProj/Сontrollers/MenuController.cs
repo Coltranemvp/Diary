@@ -1,4 +1,5 @@
 ﻿using DearyPetProj.Models;
+using DearyPetProj.Models.ProgramMode;
 using DearyPetProj.Privitives.Enums;
 using DearyPetProj.Views;
 using DearyPetProj.Views.Interfaces;
@@ -11,13 +12,13 @@ namespace DearyPetProj.Сontrollers
     public sealed class MenuController : BaseController
     {
         private static MenuController instance;
-        private EventModel _eventModel;
+        private ProgramModeModel _programtModel;
         private static object syncRoot = new();
 
 
         private MenuController(IBaseView view) : base(view)
         {
-            
+
         }
 
         public static MenuController GetInstance()
@@ -37,8 +38,8 @@ namespace DearyPetProj.Сontrollers
         {
             if (View is MenuView menuView)
             {
-                _eventModel = new EventModel();
-                var response = _eventModel.GetProgramList();
+                _programtModel = new ProgramModeModel();
+                var response = _programtModel.GetProgramList();
 
                 menuView.SetProgramMode(response);
                 menuView.MenuChange += SelectedMenu_NavigateToCurrentMode;
@@ -68,23 +69,23 @@ namespace DearyPetProj.Сontrollers
                     break;
 
                 case MainMenuMode.DeleteEvent:
-                   // new DeleteEventController();
+                    // new DeleteEventController();
                     break;
 
                 case MainMenuMode.ShowEvents:
-                   // new ShowEventsController();
+                    // new ShowEventsController();
                     break;
 
                 case MainMenuMode.AddPushForEvent:
-                  //  new AddPushForEventController();
+                    //  new AddPushForEventController();
                     break;
 
                 case MainMenuMode.ExportEvent:
-                   // new ExportEventController();
+                    NavigationToExportEventController();
                     break;
 
                 case MainMenuMode.Exite:
-                   // new ExiteController();
+                    // new ExiteController();
                     break;
 
                 default:
@@ -101,11 +102,15 @@ namespace DearyPetProj.Сontrollers
             }
         }
 
-        private  void NavigationToAddEventController()
-        {                    
+        private void NavigationToAddEventController()
+        {
+            var navigationResult = this.NavigateTo(new AddEventController(new AddEventView()));
+        }
 
-            var navigationResult = this.NavigateTo<Result>(new AddEventController(new AddEventView()));
-
+        private void NavigationToExportEventController()
+        {
+            var param = new ExportEventController.Param(new UserEvent());
+            this.NavigateTo(new ExportEventController(new ExportEventView()), param);
         }
     }
 }

@@ -1,14 +1,7 @@
 ﻿using DearyPetProj.Models;
-using DearyPetProj.Views;
 using DearyPetProj.Views.Interfaces;
-using DearyPetProj.Сontrollers.Interfaces;
 using DearyPetProj.Сontrollers.Navigation.Primitives;
-using DearyPetProj.Сontrollers.Navigation.Primitives.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static DearyPetProj.Сontrollers.AddEventController;
 
 namespace DearyPetProj.Сontrollers
 {
@@ -35,30 +28,27 @@ namespace DearyPetProj.Сontrollers
             return true;
         }
 
-         
-
-    }
-
-    public class Result : BaseResult
-    {
-        private EventModel _eventModel;
-        private string _message;
-
-        public Result(string message, bool reject = false) : base(reject)
+        public class Result : BaseResult
         {
-            Message = message;
-        }
+            private UserEvent _eventModel;
+            private string _message;
 
-        public string Message
-        {
-            get => _message;
-            set => _message = value;
-        }
+            public Result(string message, bool reject = false) : base(reject)
+            {
+                Message = message;
+            }
 
-        public EventModel EventModel
-        {
-            get => _eventModel;
-            set => _eventModel = value;
+            public string Message
+            {
+                get => _message;
+                set => _message = value;
+            }
+
+            public UserEvent EventModel
+            {
+                get => _eventModel;
+                set => _eventModel = value;
+            }
         }
-    }
+    }   
 }

@@ -1,4 +1,5 @@
-﻿using DearyPetProj.Models.Views;
+﻿using DearyPetProj.Models.ProgramMode;
+
 using DearyPetProj.Privitives.Enums;
 using System.Diagnostics;
 
@@ -7,7 +8,7 @@ namespace DearyPetProj.Views
     public sealed class MenuView : BaseView
     {
         private int LastIndexMode;
-        private  List<ProgramModeModel> _programModeModelList;
+        private  List<ProgramMode> _programModeModelList;
         private const int FirstIndexMode = 0;
 
         private DateTime _dateTimeNow;
@@ -26,7 +27,7 @@ namespace DearyPetProj.Views
 
         }
 
-        public void SetProgramMode(List<ProgramModeModel> programModelList)
+        public void SetProgramMode(List<ProgramMode> programModelList)
         {
             if (programModelList is null)
             {
@@ -138,7 +139,7 @@ namespace DearyPetProj.Views
                 ShowMessage($"Режимы работы ежедневника:{Environment.NewLine} {Environment.NewLine}");
                 ShowMessage($"Текущая дата: {_dateTimeNow} {Environment.NewLine}{Environment.NewLine}");
 
-                foreach (ProgramModeModel item in _programModeModelList)
+                foreach (ProgramMode item in _programModeModelList)
                 {
                     if (MainMenuMode.Exite == item.Mode)
                         ShowMessage(Environment.NewLine);

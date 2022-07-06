@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DearyPetProj.Views
 {
-    public class ExportEventView
+    public class ExportEventView : BaseView
     {
+        public override bool ShowView()
+        {
+            return false;
+        }
     }
 }

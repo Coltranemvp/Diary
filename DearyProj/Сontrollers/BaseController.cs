@@ -84,7 +84,7 @@ namespace DearyPetProj.Сontrollers
 
 
     /// <summary>
-    /// BaseController is for navigation without Param and Result
+    /// BaseController for navigation without Param and Result
     /// </summary>
 
     public abstract class ControllerWithoutParamResult : BaseController, IControllerWithoutParamResult
@@ -110,8 +110,6 @@ namespace DearyPetProj.Сontrollers
             //nothing here...
         }
 
-
-
         public abstract TResult GetResult();
     }
 
@@ -129,8 +127,6 @@ namespace DearyPetProj.Сontrollers
         {
             //nothing here...
         }
-
-
 
         public abstract void PrepareParam(TParam param);
     }
